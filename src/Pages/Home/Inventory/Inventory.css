@@ -1,0 +1,8 @@
+.card {
+    border: none;
+    background-color: aliceblue;
+}
+
+.card img {
+    height: 300px;
+}
