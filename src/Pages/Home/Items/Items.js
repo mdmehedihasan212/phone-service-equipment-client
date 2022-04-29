@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Items = ({ product }) => {
-    const { img, name, description, price } = product;
+    const { _id, img, name, description, price } = product;
 
     return (
         <section>
@@ -12,7 +12,7 @@ const Items = ({ product }) => {
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-title">${price}</h6>
                     <p className="card-text">{description}</p>
-                    <Link to={'/'} className="btn btn-outline-dark px-5 py-2">Go Delivery</Link>
+                    <Link to={`/inventoryUpdate/${_id}`} className="btn btn-outline-dark px-5 py-2">Update</Link>
                 </div>
             </div>
         </section>
