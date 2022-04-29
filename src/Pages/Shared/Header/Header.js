@@ -1,7 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../Firebase/firebase.init';
 
 const Header = () => {
+    const [user, loading] = useAuthState(auth);
+
     return (
         <section className='sticky-top'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,9 +26,16 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/about"}>ABOUT</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/signup"}>SIGN UP</Link>
-                            </li>
+                            {
+                                user ?
+                                    <li className="nav-item">
+                                        <Link onClick={() => signOut(auth)} className="nav-link" to={"/login"}>SIGN OUT</Link>
+                                    </li>
+                                    :
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to={"/login"}>LOGIN</Link>
+                                    </li>
+                            }
                         </ul>
                     </div>
                 </div>
