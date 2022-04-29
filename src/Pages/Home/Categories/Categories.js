@@ -9,8 +9,8 @@ const Categories = () => {
     return (
         <section className='categories-section m-4'>
             <article className='categories'>
-                <div className="text">
-                    <h4 className='text-uppercase'>Scanning Product</h4>
+                <div className="categories-text">
+                    <h3 className='text-uppercase fw-bolder'>Headphone</h3>
                 </div>
             </article>
             <article>
