@@ -1,31 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import './SignUp.css';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../Firebase/firebase.init';
 const SignUp = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setconfirmPassword] = useState('')
+    const [error, setError] = useState('')
+
+    const [
+        createUserWithEmailAndPassword,
+        createUser,
+        createLoading,
+        createUserError,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    const handlName = event => {
+        setName(event.target.value);
+        console.log(event.target.value);
+    }
+    const handlEmail = event => {
+        setEmail(event.target.value);
+        console.log(event.target.value);
+    }
+    const handlPassword = event => {
+        setPassword(event.target.value);
+        console.log(event.target.value);
+    }
+    const handlConfirmPassword = event => {
+        setconfirmPassword(event.target.value);
+        console.log(event.target.value);
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        createUserWithEmailAndPassword(email, password);
+        alert('create user')
+    }
+
     return (
         <section>
-            <form style={{ width: '400px' }} className='mx-auto my-4'>
-                <h1 className='text-center text-uppercase'>Register Please</h1>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" />
+            <form onSubmit={handleSubmit} className='form-container shadow-sm mb-5 bg-body rounded'>
+                <h2 className='text-center text-uppercase mb-3'>Register Please</h2>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputName" className="form-label">Name</label>
+                    <input onBlur={handlName} type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" required />
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                    <input onBlur={handlEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <input onBlur={handlPassword} type="password" className="form-control" id="exampleInputPassword1" required />
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                    <input type="confirm-password" class="form-control" id="exampleInputPassword1" />
+                <div className="mb-3">
+                    <label htmlFor="exampleInputConfirmPassword1" className="form-label">Confirm Password</label>
+                    <input onBlur={handlConfirmPassword} type="password" className="form-control" id="exampleInputConfirmPassword1" required />
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div className="mb-3 form-check">
+                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div className='text-center'>
+                    <button type="submit" className="w-75 mx-auto btn btn-primary text-uppercase mb-3">Register</button>
+                </div>
             </form>
         </section>
     );
