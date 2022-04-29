@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SignUp.css';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.init';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -56,9 +57,10 @@ const SignUp = () => {
                     <label htmlFor="exampleInputConfirmPassword1" className="form-label">Confirm Password</label>
                     <input onBlur={handleConfirmPassword} type="password" className="form-control" id="exampleInputConfirmPassword1" required />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <p>Already have an account?
+                        <Link to={'/login'}> Please Login!</Link>
+                    </p>
                 </div>
                 <div className='text-center'>
                     <button type="submit" className="w-75 mx-auto btn btn-primary text-uppercase mb-3">Register</button>

@@ -15,7 +15,11 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/inventoryUpdate' element={<InventoryUpdate></InventoryUpdate>}></Route>
+        <Route path='/inventoryUpdate' element={
+          <RequireAuth>
+            <InventoryUpdate></InventoryUpdate>
+          </RequireAuth>
+        }></Route>
         <Route path='/inventoryUpdate/:id' element={
           <RequireAuth>
             <InventoryUpdate></InventoryUpdate>
