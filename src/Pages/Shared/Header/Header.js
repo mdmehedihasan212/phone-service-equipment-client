@@ -28,9 +28,20 @@ const Header = () => {
                             </li>
                             {
                                 user ?
-                                    <li className="nav-item">
-                                        <Link onClick={() => signOut(auth)} className="nav-link" to={"/login"}>SIGN OUT</Link>
-                                    </li>
+                                    <>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to={"/manageInventory"}>Manage Items</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to={"/addNewItem"}>Add Item</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to={"/"}>My items</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link onClick={() => signOut(auth)} className="nav-link" to={"/signup"}>SIGN OUT</Link>
+                                        </li>
+                                    </>
                                     :
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/login"}>LOGIN</Link>
