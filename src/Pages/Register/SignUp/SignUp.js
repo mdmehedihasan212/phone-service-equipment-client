@@ -3,6 +3,7 @@ import './SignUp.css';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.init';
 import { Link } from 'react-router-dom';
+import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -65,6 +66,7 @@ const SignUp = () => {
                 <div className='text-center'>
                     <button type="submit" className="w-75 mx-auto btn btn-primary text-uppercase mb-3">Register</button>
                 </div>
+                <SocialRegister></SocialRegister>
             </form>
         </section>
     );

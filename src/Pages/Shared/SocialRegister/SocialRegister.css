@@ -1,0 +1,11 @@
+.google-btn {
+    width: 450px;
+    border: 1px solid lightgray;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.google-icon {
+    font-size: 25px;
+}

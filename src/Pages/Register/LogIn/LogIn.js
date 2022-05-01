@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
+import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 
 const LogIn = () => {
     const [email, setEmail] = useState('')
@@ -61,6 +62,7 @@ const LogIn = () => {
                 <div className='text-center'>
                     <button type="submit" className="w-75 mx-auto btn btn-primary text-uppercase mb-3">Login</button>
                 </div>
+                <SocialRegister></SocialRegister>
             </form>
         </section>
     );
