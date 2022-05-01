@@ -1,7 +1,11 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import auth from '../../../Firebase/firebase.init';
 
 const AddNewItem = () => {
+    const [user] = useAuthState(auth);
+
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         const url = `https://fathomless-hamlet-80982.herokuapp.com/product`;
@@ -16,11 +20,8 @@ const AddNewItem = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                alert('create user')
+                alert('Successfully Create New Items')
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
     };
 
     return (
@@ -28,8 +29,10 @@ const AddNewItem = () => {
             <article>
                 <form className='d-flex flex-column form-container shadow-sm mb-5 bg-body rounded' onSubmit={handleSubmit(onSubmit)}>
                     <h1 className='text-center'>Add New Item</h1>
+                    <label className='mb-2'>Email</label>
+                    <input className='mb-2' value={user?.email} {...register("email", { required: true })} readOnly />
                     <label className='mb-2'>Name</label>
-                    <input className='mb-2' {...register("Name", { required: true })} />
+                    <input className='mb-2' {...register("name", { required: true })} />
                     <label className='mb-2'>Price</label>
                     <input className='mb-2' type="number" {...register("price", { required: true })} />
                     <label className='mb-2'>Description</label>

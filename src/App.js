@@ -4,6 +4,7 @@ import About from './Pages/About/About';
 import AddNewItem from './Pages/Home/AddNewItem/AddNewItem';
 import Home from './Pages/Home/Home/Home';
 import ManageInventory from './Pages/Home/ManageInventory/ManageInventory';
+import MyItems from './Pages/Home/MyItems/MyItems';
 import InventoryUpdate from './Pages/InventoryUpdate/InventoryUpdate';
 import LogIn from './Pages/Register/LogIn/LogIn';
 import SignUp from './Pages/Register/SignUp/SignUp';
@@ -35,6 +36,11 @@ function App() {
         <Route path='/addNewItem' element={
           <RequireAuth>
             <AddNewItem></AddNewItem>
+          </RequireAuth>
+        }></Route>
+        <Route path='/myItems' element={
+          <RequireAuth>
+            <MyItems></MyItems>
           </RequireAuth>
         }></Route>
         <Route path='/about' element={<About></About>}></Route>
