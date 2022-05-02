@@ -11,13 +11,14 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const [
         createUserWithEmailAndPassword,
         createUser,
         createLoading,
         createUserError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const handleName = event => {
         setName(event.target.value);
@@ -34,8 +35,15 @@ const SignUp = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        createUserWithEmailAndPassword(email, password);
-        alert('create user')
+        if (password === confirmPassword) {
+            createUserWithEmailAndPassword(email, password);
+            alert("Successfully User Register and Send Your Email Verify")
+            setError('')
+            event.target.reset();
+        }
+        else {
+            setError("Password doesn't matched")
+        }
     }
 
     return (
@@ -58,10 +66,13 @@ const SignUp = () => {
                     <label htmlFor="exampleInputConfirmPassword1" className="form-label">Confirm Password</label>
                     <input onBlur={handleConfirmPassword} type="password" className="form-control" id="exampleInputConfirmPassword1" required />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 text-center">
                     <p>Already have an account?
                         <Link to={'/login'}> Please Login!</Link>
                     </p>
+                </div>
+                <div className="mb-3 text-center">
+                    <p className='text-danger'>{error}</p>
                 </div>
                 <div className='text-center'>
                     <button type="submit" className="w-75 mx-auto btn btn-primary text-uppercase mb-3">Register</button>

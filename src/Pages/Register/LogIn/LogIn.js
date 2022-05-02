@@ -54,7 +54,7 @@ const LogIn = () => {
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 text-center">
                     <p>I have no account?
                         <Link to={'/signup'}> Please register!</Link>
                     </p>
