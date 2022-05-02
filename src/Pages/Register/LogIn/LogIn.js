@@ -4,12 +4,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 import { toast } from 'react-toastify';
+import Loading from '../../Shared/Loading/Loading';
+import axios from 'axios';
 
 const LogIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -23,7 +24,9 @@ const LogIn = () => {
 
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-
+    if (loading || signLoading) {
+        return <Loading></Loading>
+    }
 
     const from = location.state?.from?.pathname || "/";
 
@@ -39,10 +42,16 @@ const LogIn = () => {
         setPassword(event.target.value);
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        signInWithEmailAndPassword(email, password);
-
+        await signInWithEmailAndPassword(email, password);
+        axios.post('http://localhost:5000/login', { email })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -60,8 +69,10 @@ const LogIn = () => {
                 <div>
                     <p
                         onClick={async () => {
-                            await sendPasswordResetEmail(email)
-                            toast('Send Password Reset Email')
+                            if (email) {
+                                await sendPasswordResetEmail(email)
+                                toast('Send Password Reset Email')
+                            }
                         }}
                         style={{ cursor: 'pointer' }} className='link-primary mb-0'>Forget password?</p>
                     <p>I have no account!

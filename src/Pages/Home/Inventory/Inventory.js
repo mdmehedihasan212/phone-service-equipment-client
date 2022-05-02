@@ -9,9 +9,7 @@ const Inventory = () => {
 
     return (
         <section className='container'>
-            <article className='text-center mt-5'>
-                <h1>SPECIAL DEALS</h1>
-            </article>
+            <h1 className='text-center mt-5'>Inventory</h1>
             <article className="row row-cols-1 row-cols-md-3 g-5 mt-4">
                 {
                     products?.map(product => <Items

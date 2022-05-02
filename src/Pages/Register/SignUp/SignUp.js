@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './SignUp.css';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.init';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
+import Loading from '../../Shared/Loading/Loading';
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -12,6 +13,8 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const [
         createUserWithEmailAndPassword,
@@ -19,6 +22,17 @@ const SignUp = () => {
         createLoading,
         createUserError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [user, loading] = useAuthState(auth);
+    const from = location.state?.from?.pathname || "/";
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    if (createLoading) {
+        return <Loading></Loading>
+    }
 
     const handleName = event => {
         setName(event.target.value);
