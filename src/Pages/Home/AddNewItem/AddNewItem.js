@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import auth from '../../../Firebase/firebase.init';
+import './AddNewItem.css';
 
 const AddNewItem = () => {
     const [user] = useAuthState(auth);
@@ -25,6 +26,7 @@ const AddNewItem = () => {
     };
 
     return (
+
         <section className='w-50 mx-auto my-4'>
             <article>
                 <form className='d-flex flex-column form-container shadow-sm mb-5 bg-body rounded' onSubmit={handleSubmit(onSubmit)}>
