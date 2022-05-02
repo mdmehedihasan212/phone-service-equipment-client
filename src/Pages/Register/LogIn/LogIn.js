@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
+import { toast } from 'react-toastify';
 
 const LogIn = () => {
     const [email, setEmail] = useState('')
@@ -19,6 +20,8 @@ const LogIn = () => {
         signLoading,
         signError,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
 
 
@@ -54,9 +57,15 @@ const LogIn = () => {
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
                 </div>
-                <div className="mb-3 text-center">
-                    <p>I have no account?
-                        <Link to={'/signup'}> Please register!</Link>
+                <div>
+                    <p
+                        onClick={async () => {
+                            await sendPasswordResetEmail(email)
+                            toast('Send Password Reset Email')
+                        }}
+                        style={{ cursor: 'pointer' }} className='link-primary mb-0'>Forget password?</p>
+                    <p>I have no account!
+                        <Link className='text-decoration-none mx-2' to={'/signup'}>Please register</Link>
                     </p>
                 </div>
                 <div className='text-center'>
