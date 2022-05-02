@@ -1,3 +1,16 @@
+# Project Details
+
+Website Name: Phone Garage
+
+# Short Description
+
+* This project I use bootstrap CDN Link
+* User authentication for firebase (react firebase hooks)
+* User Routing for react router dom
+* I use react icon for some social icon in site
+* I use react toastify for user some toast notification
+
+
 # Github Link
 
 Github Link Client Site (https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mdmehedihasan212)
