@@ -31,7 +31,23 @@ const LogIn = () => {
     const from = location.state?.from?.pathname || "/";
 
     if (user) {
-        navigate(from, { replace: true });
+
+        fetch('http://localhost:5000/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: user?.email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem("accessToken", data.accessToken)
+                navigate(from, { replace: true });
+            })
+
+
     }
 
     const handleEmail = event => {
@@ -42,16 +58,9 @@ const LogIn = () => {
         setPassword(event.target.value);
     }
 
-    const handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault();
-        await signInWithEmailAndPassword(email, password);
-        axios.post('http://localhost:5000/login', { email })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        signInWithEmailAndPassword(email, password);
     }
 
     return (

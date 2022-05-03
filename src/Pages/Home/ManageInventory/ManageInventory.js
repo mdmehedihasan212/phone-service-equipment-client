@@ -10,7 +10,7 @@ const ManageInventory = () => {
         // console.log('clicked', id);
         const proceed = window.confirm('Are you sure delete item!')
         if (proceed) {
-            const url = `https://fathomless-hamlet-80982.herokuapp.com/product/${id}`;
+            const url = `http://localhost:5000/product/${id}`;
             fetch(url, {
                 method: "DELETE"
             })

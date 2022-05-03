@@ -9,7 +9,7 @@ const AddNewItem = () => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        const url = `https://fathomless-hamlet-80982.herokuapp.com/product`;
+        const url = `http://localhost:5000/order`;
         console.log(url);
         fetch(url, {
             method: "POST",

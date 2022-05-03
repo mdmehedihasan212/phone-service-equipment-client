@@ -7,15 +7,14 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
 
     useEffect(() => {
-        const email = user.email;
-        const url = `https://fathomless-hamlet-80982.herokuapp.com/product?email=${email}`;
+        const email = user?.email;
+        const url = `http://localhost:5000/order?email=${email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 setGetItem(data)
             })
-
     }, [user]);
 
     return (
