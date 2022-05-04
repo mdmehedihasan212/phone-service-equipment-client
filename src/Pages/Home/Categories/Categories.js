@@ -13,12 +13,12 @@ const Categories = () => {
                 </div>
             </article>
             <article>
-                {/* {
+                {
                     products?.map(product => <Categorie
                         key={product._id}
                         product={product}
                     ></Categorie>)
-                } */}
+                }
             </article>
         </section>
     );
