@@ -1,0 +1,98 @@
+[
+    {
+        "price": "$187.48",
+        "image": "https://i.ibb.co/YRp5t7c/equipment-33.webp",
+        "quantity": 14,
+        "name": "Mobile Phone Repairing Tool Kit",
+        "supplier": "Bedrock Mobile",
+        "description": "A mobile repair electronic tool kits consists of most of the small tools need for most electronic repairing jobs."
+    },
+    {
+        "price": "$197.50",
+        "image": "https://i.ibb.co/BBy7knb/equipment-7.jpg",
+        "quantity": 10,
+        "name": "Precision Screwdriver",
+        "supplier": "Illuminate Mobile",
+        "description": "Precision screwdriver is used to unscrew and remove and tighten screws while assembling and dissembling a mobile phone"
+    },
+    {
+        "price": "$177.44",
+        "image": "https://i.ibb.co/YBx3twY/equipment-10.jpg",
+        "quantity": 12,
+        "name": "Screwdriver Kit",
+        "supplier": "FirstPlace Mobile",
+        "description": "A screwdriver kit has several screwdrivers of different shapes and sizes to dissemble and assemble a mobile phone."
+    },
+    {
+        "price": "$250.92",
+        "image": "https://i.ibb.co/9sTYwWy/equipment-12.webp",
+        "quantity": 5,
+        "name": "Microscope or Magnifier",
+        "supplier": "SecondChance Mobile",
+        "description": "These used to see a magnified view of PCB or electronic components. These are available in different zoom options like 3X, 5X etc."
+    },
+    {
+        "price": "$87.40",
+        "image": "https://i.ibb.co/L6r3T5z/equipment-17.webp",
+        "quantity": 15,
+        "name": "Soldering Iron",
+        "supplier": "Eternal Mobile",
+        "description": "A soldering iron is used to solder small components like capacitor, resistor, diode, transistor, regulator, display etc. "
+    },
+    {
+        "price": "$100.50",
+        "image": "https://i.ibb.co/ZTWWr1L/equipment-20.webp",
+        "quantity": 12,
+        "name": "Soldering Station",
+        "supplier": "Mobile Hard",
+        "description": "A soldering station has 2 units – a station and an iron. It has option to control temperature depending on the heat."
+    },
+    {
+        "price": "$130.33",
+        "image": "https://i.ibb.co/Lpmmq2W/equipment-21.webp",
+        "quantity": 8,
+        "name": "Multimeter",
+        "supplier": "Mobile Hard",
+        "description": "A multimeter can be analog or digital. In mobile phone repairing, mostly a digital multimeter is used to find faults."
+    },
+    {
+        "price": "$50.40",
+        "image": "https://i.ibb.co/ykgh5fp/equipment-23.webp",
+        "quantity": 20,
+        "name": "BGA Kit",
+        "supplier": "Tiny Mobile",
+        "description": "A BGA Repair Kit is used to Reball and repair ball-type ICs. BGA stands for Ball Grid Array."
+    },
+    {
+        "price": "$170.99",
+        "image": "https://i.ibb.co/z651gYg/equipment-31.webp",
+        "quantity": 11,
+        "name": " Hot Air Blower",
+        "supplier": "Mobile Hard",
+        "description": "A hot air blower is also called SMD (Surface Mount Device) rework station and SMD repair system."
+    },
+    {
+        "price": "$90.10",
+        "image": "https://i.ibb.co/9y1g8wz/equipment-26.webp",
+        "quantity": 20,
+        "name": "Wrist Strap",
+        "supplier": "Mobile Surf",
+        "description": "It is worn in the wrist of the person who is repairing a mobile phone. It is used for ESD Prevention and helps to discharge."
+    },
+    {
+        "price": "$387.48",
+        "image": "https://i.ibb.co/cb6M2HM/equipment-27.jpg",
+        "quantity": 10,
+        "name": "Battery Booster",
+        "supplier": "Mobile Surf",
+        "description": "A battery booster is used to boost the power of battery of a mobile phone."
+    },
+    {
+        "price": "$30.30",
+        "image": "https://i.ibb.co/D8X7Qp8/equipment-30.jpg",
+        "quantity": 20,
+        "name": "Magnifying Lamp",
+        "supplier": "Gridiron Mobile",
+        "description": "It is used to see the magnified view of the PCB of a mobile phone. Most magnifying lamps also have light."
+    }
+]

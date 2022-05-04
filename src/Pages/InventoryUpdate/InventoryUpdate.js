@@ -5,7 +5,7 @@ import useProductId from '../../Hooks/useProductId';
 const InventoryUpdate = ({ cart }) => {
     const { id } = useParams();
     const [productId] = useProductId(id);
-    const { img, name, price, description } = productId || {};
+    const { image, name, price, description } = productId || {};
 
     return (
         <section className='container'>
@@ -15,7 +15,7 @@ const InventoryUpdate = ({ cart }) => {
             </form>
             <Link to={`/`} className="btn btn-outline-dark px-5 py-2">Delivered</Link>
             <div className="card" style={{ width: '18rem' }}>
-                <img src={img} className="card-img-top" alt="..." />
+                <img src={image} className="card-img-top" alt="..." />
                 <div className="card-body text-center">
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-title">${price}</h6>

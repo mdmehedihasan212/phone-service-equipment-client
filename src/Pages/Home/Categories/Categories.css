@@ -1,10 +1,5 @@
-.categories-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
 .categories {
-    background-image: url('../../../Assets/categories/headphone-man.webp');
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
