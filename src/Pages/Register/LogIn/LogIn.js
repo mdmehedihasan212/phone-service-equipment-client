@@ -5,7 +5,6 @@ import auth from '../../../Firebase/firebase.init';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
-import axios from 'axios';
 
 const LogIn = () => {
     const [email, setEmail] = useState('')

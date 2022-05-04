@@ -31,7 +31,7 @@ const ManageInventory = () => {
             </article>
             <article className='container w-50 mx-auto'>
                 {
-                    products?.map(product => <>
+                    products?.map(product => <div key={product._id}>
                         <table className='table text-center border border-1'>
                             <tbody>
                                 <tr>
@@ -43,7 +43,7 @@ const ManageInventory = () => {
                                 </tr>
                             </tbody>
                         </table>
-                    </>)
+                    </div>)
                 }
             </article>
         </section>

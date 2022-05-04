@@ -5,7 +5,6 @@ import './Categories.css';
 
 const Categories = () => {
     const [products] = useProduct();
-    console.log(products);
     return (
         <section className='categories-section m-4'>
             <article className='categories'>
