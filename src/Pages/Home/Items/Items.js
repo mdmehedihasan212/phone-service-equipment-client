@@ -6,7 +6,7 @@ const Items = ({ product }) => {
 
     return (
         <section>
-            <div className="card position-relative" style={{ height: '580px' }}>
+            <div className="position-relative" style={{ height: '580px' }}>
                 <img src={image} className="card-img-top" alt="img" />
                 <div className="card-body text-center">
                     <h5 className="card-title">{name}</h5>

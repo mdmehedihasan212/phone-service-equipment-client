@@ -18,7 +18,7 @@ const Inventory = () => {
                     ></Items>)
                 }
             </article>
-            <article className='text-center mt-3 mb-5'>
+            <article className='text-center mt-5 mb-5'>
                 <Link to={'/manageInventory'} className="btn btn-outline-dark px-5 py-2">Manage Inventories</Link>
             </article>
         </section>
