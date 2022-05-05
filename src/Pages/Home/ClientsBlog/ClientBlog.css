@@ -1,0 +1,26 @@
+.client-card {
+    height: 400px;
+    width: 600px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.client-card h5 {
+    text-align: justify;
+    padding: 20px;
+}
+
+.client-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    padding: 20px;
+}
+
+.client-info img {
+    height: 50px !important;
+    width: 50px;
+    border-radius: 50%;
+}
