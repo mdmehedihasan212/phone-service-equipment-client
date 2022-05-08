@@ -1,16 +1,15 @@
 import React from 'react';
 import useProduct from '../../../Hooks/useProduct';
-import { MdDeleteForever } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import ManageInventoryDetails from '../ManageInventoryDetails/ManageInventoryDetails';
 
 const ManageInventory = () => {
     const [products, setProducts] = useProduct();
 
     const handleToDelete = id => {
-        // console.log('clicked', id);
         const proceed = window.confirm('Are you sure delete item!')
         if (proceed) {
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://fathomless-hamlet-80982.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
@@ -31,19 +30,12 @@ const ManageInventory = () => {
             </article>
             <article className='container w-50 mx-auto'>
                 {
-                    products?.map(product => <div key={product._id}>
-                        <table className='table text-center border border-1'>
-                            <tbody>
-                                <tr>
-                                    <td className='py-4'>{product.name}</td>
-                                    <td className='py-4'>${product.price}</td>
-                                    <td className='py-4'>
-                                        <MdDeleteForever onClick={() => handleToDelete(product._id)} cursor={'pointer'} color='red' fontSize={'1.8em'} />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>)
+                    products?.map(product =>
+                        <ManageInventoryDetails
+                            key={product._id}
+                            product={product}
+                            handleToDelete={handleToDelete}
+                        ></ManageInventoryDetails>)
                 }
             </article>
         </section>

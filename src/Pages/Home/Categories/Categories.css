@@ -6,6 +6,11 @@
     height: 600px;
 }
 
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .card img {
     height: 100px !important;
     width: 100px;
@@ -33,4 +38,22 @@
 .card a:hover {
     color: goldenrod;
     cursor: pointer;
+}
+
+@media screen and (max-width:767px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .categories {
+        background-color: black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 1700px;
+    }
+
+    .main-card {
+        margin-bottom: 20px;
+    }
 }

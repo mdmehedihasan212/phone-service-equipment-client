@@ -1,9 +1,10 @@
 import React from 'react';
+import './Blogs.css';
 
 const Blogs = () => {
 
     return (
-        <section className='container'>
+        <section className='container blog-section'>
             <article>
                 <h4>Ques: Difference between javascript and nodejs?</h4>
                 <p>Javascript is a programming language || Nodejs is a runtime environment.</p>

@@ -1,0 +1,36 @@
+h6 {
+    margin-top: 10px;
+}
+
+.card-body {
+    text-align: center;
+    padding: 20px;
+}
+
+.product-img {
+    width: 280px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.product-img:hover {
+    width: 300px;
+    transition-delay: 1s;
+    cursor: pointer;
+}
+
+@media screen and (max-width:767px) {
+    .product-container {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .product-img {
+        margin: 0 auto;
+        display: block;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+}

@@ -1,52 +1,38 @@
-import React, { useState } from 'react';
-import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useEffect, useState } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../Hooks/useToken';
 
 const LogIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [user, loading] = useAuthState(auth);
     const [
         signInWithEmailAndPassword,
-        signUser,
+        user,
         signLoading,
-        signError,
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-    if (loading || signLoading) {
-        return <Loading></Loading>
-    }
+    const [token] = useToken(user)
 
     const from = location.state?.from?.pathname || "/";
 
-    if (user) {
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from])
 
-        fetch('http://localhost:5000/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: user?.email
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                localStorage.setItem("accessToken", data.accessToken)
-                navigate(from, { replace: true });
-            })
-
-
+    if (signLoading) {
+        return <Loading></Loading>
     }
 
     const handleEmail = event => {
@@ -57,9 +43,10 @@ const LogIn = () => {
         setPassword(event.target.value);
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
+
     }
 
     return (

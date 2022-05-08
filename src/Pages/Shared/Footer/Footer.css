@@ -1,10 +1,62 @@
 .footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     color: white;
     background-color: black;
     height: 250px;
     margin-bottom: 5px;
+    margin-top: 200px;
 }
 
 .footer h4 {
     margin: 30px 0px;
+}
+
+.footer div {
+    text-align: center;
+}
+
+.social-btn span {
+    margin: 0 10px;
+    font-size: 1.3em;
+}
+
+.social-btn span:hover {
+    color: goldenrod;
+    cursor: pointer;
+}
+
+.footer p {
+    color: gray;
+}
+
+.footer-copyright {
+    font-size: 0.8em;
+}
+
+.footer p:hover {
+    color: goldenrod;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width:767px) {
+    .footer {
+        grid-template-columns: 1fr;
+        height: 900px;
+        text-align: center;
+    }
+
+    .footer div {
+        margin-bottom: 20px;
+    }
+
+    .footer p:hover {
+        color: goldenrod;
+    }
+
+
+    .footer-copyright {
+        font-size: 0.6em;
+    }
 }

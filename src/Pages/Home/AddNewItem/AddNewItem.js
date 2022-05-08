@@ -1,16 +1,16 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
-import './AddNewItem.css';
 
 const AddNewItem = () => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        const url = `http://localhost:5000/order`;
-        console.log(url);
+        const url = `https://fathomless-hamlet-80982.herokuapp.com/product`;
         fetch(url, {
             method: "POST",
             headers: {
@@ -21,27 +21,26 @@ const AddNewItem = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 alert('Successfully Create New Items')
+                navigate('/myItems')
             })
     };
 
     return (
-
-        <section className='w-50 mx-auto my-4'>
+        <section className='mx-auto my-4'>
             <article>
-                <form className='d-flex flex-column form-container shadow-sm mb-5 bg-body rounded' onSubmit={handleSubmit(onSubmit)}>
+                <form className='form-container d-flex flex-column shadow-sm mb-5 bg-body' onSubmit={handleSubmit(onSubmit)}>
                     <h1 className='text-center'>Add New Item</h1>
                     <label className='mb-2'>Email</label>
-                    <input className='mb-2' value={user?.email} {...register("email", { required: true })} readOnly />
+                    <input className='mb-2 px-1 py-2' value={user?.email} {...register("email", { required: true })} readOnly />
                     <label className='mb-2'>Name</label>
-                    <input className='mb-2' {...register("name", { required: true })} />
+                    <input className='mb-2 px-1 py-2' {...register("name", { required: true })} />
                     <label className='mb-2'>Price</label>
-                    <input className='mb-2' type="number" {...register("price", { required: true })} />
+                    <input className='mb-2 px-1 py-2' type="number" {...register("price", { required: true })} />
                     <label className='mb-2'>Description</label>
-                    <textarea className='mb-2' {...register("description", { required: true })} />
+                    <textarea className='mb-2 px-1 py-2' {...register("description", { required: true })} />
                     <label className='mb-2'>Img Url</label>
-                    <input className='mb-2' {...register("img", { required: true })} />
+                    <input className='mb-2 px-1 py-2' {...register("image", { required: true })} />
                     <input className='w-75 mx-auto btn btn-primary text-uppercase my-3' type="submit" />
                 </form>
             </article>

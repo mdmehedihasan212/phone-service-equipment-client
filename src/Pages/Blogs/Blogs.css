@@ -1,0 +1,20 @@
+.blog-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.blog-section article {
+    margin: 20px;
+}
+
+@media screen and (max-width:767px) {
+    .blog-section {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .blog-section h4 {
+        font-size: 1.1em;
+    }
+
+}

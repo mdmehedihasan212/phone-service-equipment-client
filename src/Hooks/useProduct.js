@@ -4,12 +4,11 @@ const useProduct = () => {
     const [products, setProducts] = useState();
 
     useEffect(() => {
-        const url = 'http://localhost:5000/product';
-        fetch(url)
+        fetch('https://fathomless-hamlet-80982.herokuapp.com/product')
             .then(res => res.json())
             .then(data => setProducts(data))
-
     }, [])
+
     return [products, setProducts];
 }
 

@@ -16,7 +16,7 @@
 }
 
 .banner-text span {
-    color: white;
+    color: goldenrod;
     font-size: 17px;
 }
 
@@ -46,4 +46,39 @@
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width:767px) {
+    .banner {
+        background-color: black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 400px;
+    }
+
+    .banner-text span {
+        color: goldenrod;
+        font-size: 10px;
+    }
+
+    .banner-text h1 {
+        font-size: 60px;
+        font-weight: bolder;
+        color: white;
+        text-shadow: 2px 2px 4px white;
+        margin-bottom: 0px;
+    }
+
+    .banner-text h2 {
+        font-size: 60px;
+        -webkit-text-stroke: 1px goldenrod;
+        color: black;
+        text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+    }
 }

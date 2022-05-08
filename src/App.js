@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './Pages/About/About';
+import 'animate.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Blogs from './Pages/Blogs/Blogs';
 import AddNewItem from './Pages/Home/AddNewItem/AddNewItem';
 import Home from './Pages/Home/Home/Home';
@@ -18,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -48,7 +49,6 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='/about' element={<About></About>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/login' element={<LogIn></LogIn>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

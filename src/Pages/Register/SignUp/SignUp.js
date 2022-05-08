@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SignUp.css';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../Hooks/useToken';
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -13,8 +14,10 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
+    const [token] = useToken(user);
 
     const [
         createUserWithEmailAndPassword,
@@ -23,14 +26,13 @@ const SignUp = () => {
         createUserError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [user, loading] = useAuthState(auth);
     const from = location.state?.from?.pathname || "/";
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 
-    if (createLoading) {
+    if (createLoading || loading) {
         return <Loading></Loading>
     }
 
@@ -49,6 +51,7 @@ const SignUp = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
+
         if (password === confirmPassword) {
             createUserWithEmailAndPassword(email, password);
             alert("Successfully User Register and Send Your Email Verify")

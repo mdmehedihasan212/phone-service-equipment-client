@@ -1,61 +1,42 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
+import './Header.css';
 
 const Header = () => {
     const [user] = useAuthState(auth);
 
     return (
-        <section className='sticky-top text-uppercase' style={{ height: '80px' }}>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
-                        <Link className="navbar-brand fw-bolder fs-4" to={"/"}><span style={{ color: 'goldenrod' }}>PHONE</span> GARAGE</Link>
-                        <ul className="navbar-nav ms-auto mb-2">
-                            <li className="nav-item">
-                                <CustomLink className="nav-link" aria-current="page" to={"/"}>Home</CustomLink>
-                            </li>
-                            <li className="nav-item">
-                                <CustomLink className="nav-link" aria-current="page" to={"/inventoryUpdate"}>Inventory</CustomLink>
-                            </li>
-                            <li className="nav-item">
-                                <CustomLink className="nav-link" to={"/blogs"}>Blogs</CustomLink>
-                            </li>
-                            <li className="nav-item">
-                                <CustomLink className="nav-link" to={"/about"}>About</CustomLink>
-                            </li>
+        <>
+            <Navbar collapseOnSelect sticky='top' expand="lg" bg="light" variant="light" className='text-uppercase main-nav'>
+                <Container>
+                    <Navbar.Brand to={'/'} as={Link} className="navbar-brand navbar-name"><span>PHONE</span> GARAGE</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="navigate-container ms-auto">
+                            <CustomLink to={'/'}>Home</CustomLink>
+                            <CustomLink to={"/inventoryUpdate"}>Inventory</CustomLink>
+                            <CustomLink to={"/blogs"}>Blogs</CustomLink>
                             {
                                 user ?
                                     <>
-                                        <li className="nav-item">
-                                            <CustomLink className="nav-link" to={"/manageInventory"}>Manage Items</CustomLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <CustomLink className="nav-link" to={"/addNewItem"}>Add Item</CustomLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <CustomLink className="nav-link" to={"/myItems"}>My Items</CustomLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <CustomLink onClick={() => signOut(auth)} className="nav-link" to={"/signup"}>Log Out</CustomLink>
-                                        </li>
+                                        <CustomLink to={"/manageInventory"}>Manage Items</CustomLink>
+                                        <CustomLink to={"/addNewItem"}>Add Item</CustomLink>
+                                        <CustomLink to={"/myItems"}>My Items</CustomLink>
+                                        <CustomLink onClick={() => signOut(auth)} to={"/login"}>Log Out</CustomLink>
                                     </>
                                     :
-                                    <li className="nav-item">
-                                        <CustomLink className="nav-link" to={"/login"}>Login</CustomLink>
-                                    </li>
+                                    <CustomLink to={"/login"}>Login</CustomLink>
                             }
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </section>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </>
     );
 };
 

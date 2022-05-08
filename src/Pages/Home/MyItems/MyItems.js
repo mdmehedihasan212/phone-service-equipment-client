@@ -1,26 +1,26 @@
-import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import axiosPrivate from '../../../Api/axiosPrivate';
 import auth from '../../../Firebase/firebase.init';
+import useProduct from '../../../Hooks/useProduct';
+import MyItem from '../MyItem/MyItem';
 
 const MyItems = () => {
-    const [getItem, setGetItem] = useState([]);
+    const [getItems, setGetItems] = useState([]);
+    const [products, setProducts] = useProduct();
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
     useEffect(() => {
+
         const getToken = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/order?email=${email}`;
+            const url = `https://fathomless-hamlet-80982.herokuapp.com/items?email=${email}`;
             try {
-                const { data } = await axios.get(url, {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                });
-                setGetItem(data)
+                const { data } = await axiosPrivate.get(url);
+                setGetItems(data)
             }
             catch (error) {
                 console.log(error);
@@ -32,12 +32,39 @@ const MyItems = () => {
 
         }
         getToken();
+
+
     }, [user, navigate]);
 
+    const handleToDelete = id => {
+        const proceed = window.confirm('Are you sure delete item!')
+        if (proceed) {
+            const url = `https://fathomless-hamlet-80982.herokuapp.com/product/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const reaming = products?.filter(product => product._id !== id)
+                    setProducts(reaming)
+                    console.log(data);
+                })
+        }
+    }
+
     return (
-        <div>
-            <h1>MyItems: {getItem.length}</h1>
-        </div>
+        <section>
+            <h1 className='text-center my-4'>My Order Items</h1>
+            <article className='container w-50 mx-auto'>
+                {
+                    getItems?.map(item => <MyItem
+                        key={item._id}
+                        item={item}
+                        handleToDelete={handleToDelete}
+                    ></MyItem>)
+                }
+            </article>
+        </section>
     );
 };
 

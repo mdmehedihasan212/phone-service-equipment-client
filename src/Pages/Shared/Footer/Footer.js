@@ -5,9 +5,11 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
 
 const Footer = () => {
+    const today = new Date();
+    const date = today.getFullYear();
     return (
         <section>
-            <article className='footer d-flex justify-content-around'>
+            <article className='footer'>
                 <div>
                     <h4>Phone Garage</h4>
                 </div>
@@ -27,11 +29,11 @@ const Footer = () => {
                 </div>
                 <div>
                     <h4>SOCIAL</h4>
-                    <p><span><AiOutlineGoogle /></span> <span><RiFacebookFill /></span> <span><AiFillGithub /></span></p>
+                    <h6 className='social-btn'><span><AiOutlineGoogle /></span> <span><RiFacebookFill /></span> <span><AiFillGithub /></span></h6>
                 </div>
             </article>
             <article>
-                <p className='text-center'> 2022</p>
+                <p className='footer-copyright text-center my-3 text-uppercase'>copyright &copy; {date} Phone Garage, All Right Reserved</p>
             </article>
         </section>
     );

@@ -2,7 +2,6 @@ import React from 'react';
 import './Inventory.css';
 import useProduct from '../../../Hooks/useProduct';
 import Items from '../Items/Items';
-import { Link } from 'react-router-dom';
 
 const Inventory = () => {
     const [products] = useProduct();
@@ -17,9 +16,6 @@ const Inventory = () => {
                         product={product}
                     ></Items>)
                 }
-            </article>
-            <article className='text-center mt-5 mb-5'>
-                <Link to={'/manageInventory'} className="btn btn-outline-dark px-5 py-2">Manage Inventories</Link>
             </article>
         </section>
     );

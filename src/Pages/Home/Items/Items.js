@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Items.css';
 
 const Items = ({ product }) => {
     const { _id, image, name, description, price, quantity, supplier } = product;
 
     return (
         <section>
-            <div className="position-relative" style={{ height: '580px' }}>
-                <img src={image} className="card-img-top" alt="img" />
-                <div className="card-body text-center">
+            <div className="position-relative product-container" style={{ height: '500px' }}>
+                <img src={image} className="card-img-top product-img" alt="img" />
+                <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-title">Quantity: {quantity}</h6>
                     <h6 className="card-title">Price: {price}/mo</h6>

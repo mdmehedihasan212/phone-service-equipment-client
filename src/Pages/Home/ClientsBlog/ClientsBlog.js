@@ -7,7 +7,7 @@ const ClientsBlog = () => {
     return (
         <section className='my-5'>
             <h1 className='text-center text-uppercase mb-4'>What Clients Say</h1>
-            <article className='container d-flex'>
+            <article className='container blogs-container'>
                 <div className="card client-card border-start">
                     <div className="card-body">
                         <h5 className="card-text">This is the best phone I have ever owned, bar none! The camera is second to none, with regards to ease of use and quality (Sony experience 5 ii has an insane pro grade camera that can't be beat but I very difficult to use if you don't know pro cameras). The refresh rate is fast, I've downloaded plenty of RPG games for my kids, including Roblox and Minecraft.</h5>
