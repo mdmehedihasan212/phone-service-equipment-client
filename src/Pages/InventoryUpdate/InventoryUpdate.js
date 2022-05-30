@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import useProductId from '../../Hooks/useProductId';
 
 const InventoryUpdate = () => {
+    const [productId, setProductId] = useState();
     const { id } = useParams();
-    const [productId] = useProductId(id);
-    const { image, name, description, price, quantity, supplier } = productId || {};
+
+    const { image, description, name, price, quantity, supplier } = productId || {};
+
+    useEffect(() => {
+        const url = `https://fathomless-hamlet-80982.herokuapp.com/product/${id}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setProductId(data))
+    }, [id])
 
     return (
         <section className='container text-uppercase'>

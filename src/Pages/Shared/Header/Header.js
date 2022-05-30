@@ -10,6 +10,11 @@ import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth);
 
+    const handleToSignOut = () => {
+        signOut(auth);
+        localStorage.removeItem('accessToken');
+    }
+
     return (
         <>
             <Navbar collapseOnSelect sticky='top' expand="lg" bg="light" variant="light" className='text-uppercase main-nav'>
@@ -19,7 +24,6 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="navigate-container ms-auto">
                             <CustomLink to={'/'}>Home</CustomLink>
-                            <CustomLink to={"/inventoryUpdate"}>Inventory</CustomLink>
                             <CustomLink to={"/blogs"}>Blogs</CustomLink>
                             {
                                 user ?
@@ -27,7 +31,7 @@ const Header = () => {
                                         <CustomLink to={"/manageInventory"}>Manage Items</CustomLink>
                                         <CustomLink to={"/addNewItem"}>Add Item</CustomLink>
                                         <CustomLink to={"/myItems"}>My Items</CustomLink>
-                                        <CustomLink onClick={() => signOut(auth)} to={"/login"}>Log Out</CustomLink>
+                                        <CustomLink to={"/login"} onClick={handleToSignOut}>Log Out</CustomLink>
                                     </>
                                     :
                                     <CustomLink to={"/login"}>Login</CustomLink>

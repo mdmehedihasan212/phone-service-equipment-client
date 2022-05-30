@@ -9,7 +9,7 @@ const Inventory = () => {
     return (
         <section className='container text-uppercase'>
             <h1 className='text-center mt-5'>Inventory</h1>
-            <article className="row row-cols-1 row-cols-md-3 g-5 mt-4">
+            <article className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 g-5 mt-4">
                 {
                     products?.slice(0, 6).map(product => <Items
                         key={product._id}

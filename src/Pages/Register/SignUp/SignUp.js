@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './SignUp.css';
-import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialRegister from '../../Shared/SocialRegister/SocialRegister';
@@ -13,26 +13,25 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
-    const [token] = useToken(user);
 
     const [
         createUserWithEmailAndPassword,
         createUser,
         createLoading,
-        createUserError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    const [token] = useToken(createUser);
     const from = location.state?.from?.pathname || "/";
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from])
 
-    if (createLoading || loading) {
+    if (createLoading) {
         return <Loading></Loading>
     }
 
@@ -49,11 +48,11 @@ const SignUp = () => {
         setConfirmPassword(event.target.value);
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (password === confirmPassword) {
-            createUserWithEmailAndPassword(email, password);
+            await createUserWithEmailAndPassword(email, password);
             alert("Successfully User Register and Send Your Email Verify")
             setError('')
             event.target.reset();
