@@ -9,7 +9,7 @@ const MyItem = ({ item, handleToDelete }) => {
                 <img src={image} alt="" style={{ width: '90px' }} />
             </td>
             <td>{name}</td>
-            <td>{price}</td>
+            <td>${price}</td>
             <td>
                 <p>
                     <MdDeleteForever onClick={() => handleToDelete(_id)} cursor={'pointer'} color='red' fontSize={'1.8em'} />
